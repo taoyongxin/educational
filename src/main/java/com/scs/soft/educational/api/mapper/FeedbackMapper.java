@@ -21,7 +21,8 @@ public interface FeedbackMapper {
      * @param feedback
      * @throws SQLException
      */
-    @Insert("INSERT INTO feedback VALUES (null,#{title},#{content},#{mobile},#{gmt_create},#{gmt_modified},#{is_deleted})")
-    @Options(useGeneratedKeys = true, keyProperty = "pk_feedback_id")
+    @Insert("INSERT INTO feedback VALUES " +
+            "(null,#{title},#{content},#{mobile},#{gmtCreate},#{gmtModified},#{isDeleted})")
+    @Options(useGeneratedKeys = true, keyProperty = "pkFeedbackId")
     void insert(Feedback feedback) throws SQLException;
 }
