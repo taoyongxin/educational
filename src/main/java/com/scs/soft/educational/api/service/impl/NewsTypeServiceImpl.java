@@ -34,9 +34,9 @@ public class NewsTypeServiceImpl implements NewsTypeService {
         List<Map> map;
         try {
             types = typeMapper.getAllType();
-            for (Map type:types){
+            for (Map type : types) {
                 map = newsTypeMapper.getAllNewsByType(Long.parseLong(String.valueOf(type.get("pk_type_id"))));
-                type.put("newsList",map);
+                type.put("newsList", map);
             }
         } catch (SQLException e) {
             log.error(e.getMessage());
@@ -44,4 +44,18 @@ public class NewsTypeServiceImpl implements NewsTypeService {
         }
         return Result.success(types);
     }
+
+    @Override
+    public Result getNews(Long id) {
+        List<Map> mapList = null;
+        try {
+            mapList = newsTypeMapper.getAllNewsByType(id);
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            return Result.failure(ResultCode.DATABASE_ERROR);
+        }
+        return Result.success(mapList);
+    }
+
+
 }

@@ -11,4 +11,10 @@ public interface NewsTypeService {
      * @return
      */
     Result getAllNewsByType();
+
+    /**
+     * 根据id获取咨询
+     * @return
+     */
+    Result getNews(Long id);
 }

@@ -18,4 +18,10 @@ class NewsTypeServiceTest {
         Result result = newsTypeService.getAllNewsByType();
         System.out.println(result);
     }
+
+    @Test
+    void getNews() {
+        Result result = newsTypeService.getNews((long)1);
+        System.out.println(result);
+    }
 }
