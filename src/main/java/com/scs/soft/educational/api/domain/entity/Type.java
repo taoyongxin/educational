@@ -8,41 +8,21 @@ import java.sql.Timestamp;
 /**
  * @author Tao
  * @version 1.0
- * @ClassName Student
+ * @ClassName Type
  * @Description TODO
- * @date 2020-06-10 20:21
+ * @date 2020-06-12 17:44
  **/
 @Builder
 @Data
-public class Student {
+public class Type {
     /**
      * 主键
      */
-    private Long pkStudentId;
+    private Long pkTypeId;
     /**
-     * 学生姓名
+     * 分类名称
      */
     private String name;
-    /**
-     * 手机号码
-     */
-    private String mobile;
-    /**
-     * 密码
-     */
-    private String password;
-    /**
-     * 性别
-     */
-    private String gender;
-    /**
-     * 生日
-     */
-    private Timestamp birthday;
-    /**
-     * 班级名称
-     */
-    private String className;
     /**
      * 创建时间
      */
