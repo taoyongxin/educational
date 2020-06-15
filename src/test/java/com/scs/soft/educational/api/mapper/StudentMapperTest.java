@@ -31,4 +31,15 @@ class StudentMapperTest {
             System.out.println("用户帐号或者密码错误");
         }
     }
+
+    @Test
+    void update() throws SQLException{
+        Student student = Student.builder()
+                .pkStudentId((long)1)
+                .avatar("avatar.jpg")
+                .gender("女")
+                .nickname("梁小弟")
+                .build();
+        studentMapper.update(student);
+    }
 }

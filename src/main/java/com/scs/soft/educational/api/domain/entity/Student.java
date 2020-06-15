@@ -43,6 +43,21 @@ public class Student {
      * 班级名称
      */
     private String className;
+
+    /**
+     * 昵称
+     */
+    private String nickname;
+
+    /**
+     * 学号
+     */
+    private String jobNumber;
+
+    /**
+     * 头像
+     */
+    private String avatar;
     /**
      * 创建时间
      */

@@ -1,6 +1,7 @@
 package com.scs.soft.educational.api.controller;
 
 import com.scs.soft.educational.api.common.Result;
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.dto.SingleDto;
 import com.scs.soft.educational.api.service.NewsTypeService;
 import io.swagger.annotations.Api;
@@ -38,6 +39,12 @@ public class NewsTypeController {
     @PostMapping(value = "/single")
     public Result getAllNews(@RequestBody SingleDto singleDto){
         return newsTypeService.getNews(Long.valueOf(singleDto.getId()));
+    }
+
+    @ApiOperation(value = "查询分类ID获取资讯分页查询",notes = "")
+    @PostMapping(value = "/page")
+    public Result getNewsPage(@RequestBody PageDto pageDto){
+        return newsTypeService.getNewsPage(pageDto);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.scs.soft.educational.api.mapper;
 
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.entity.NewsType;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -34,4 +35,17 @@ public interface NewsTypeMapper {
             "WHERE t1.type_id = #{typeId} AND t2.is_deleted=false")
     List<Map> getAllNewsByType(@Param("typeId")Long typeId)throws SQLException;
 
+    /**
+     * 查询某个分类下的资讯信息
+     * @param pageDto
+     * @return
+     * @throws SQLException
+     */
+    @Select("SELECT t2.pk_news_id,t2.title,t2.content " +
+            "FROM news_type t1 " +
+            "LEFT JOIN news t2 " +
+            "ON t1.news_id = t2.pk_news_id " +
+            "WHERE t1.type_id = #{pageDto.id} AND t2.is_deleted=false " +
+            "LIMIT ${pageDto.pageSize*(pageDto.currentPage-1)},#{pageDto.pageSize}")
+    List<Map> getAllNewsPageByType(@Param("pageDto") PageDto pageDto)throws SQLException;
 }

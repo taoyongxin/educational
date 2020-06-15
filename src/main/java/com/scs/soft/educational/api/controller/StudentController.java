@@ -2,6 +2,7 @@ package com.scs.soft.educational.api.controller;
 
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.domain.dto.LoginDto;
+import com.scs.soft.educational.api.domain.entity.Student;
 import com.scs.soft.educational.api.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class StudentController {
     private StudentService studentService;
 
     @ApiOperation(value = "查询所有学生",notes = "")
-    @GetMapping(value = "/all")
+    @PostMapping(value = "/all")
     public Result getAllStudent(){
         return studentService.getAllStudent();
     }
@@ -36,5 +37,11 @@ public class StudentController {
     @PostMapping(value = "/login")
     public Result loginStudent(@RequestBody LoginDto loginDto){
         return studentService.studentLogin(loginDto);
+    }
+
+    @ApiOperation(value = "修改个人资料",notes = "")
+    @PostMapping(value = "/update")
+    public Result updateStudent(@RequestBody Student student){
+        return studentService.updateStudent(student);
     }
 }

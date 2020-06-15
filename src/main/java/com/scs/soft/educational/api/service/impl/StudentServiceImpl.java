@@ -49,4 +49,14 @@ public class StudentServiceImpl implements StudentService {
             return Result.failure(ResultCode.USER_ACCOUNT_PASSWORD_ERROR);
         }
     }
+
+    @Override
+    public Result updateStudent(Student student) {
+        try {
+            studentMapper.update(student);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Result.success("数据修改成功");
+    }
 }

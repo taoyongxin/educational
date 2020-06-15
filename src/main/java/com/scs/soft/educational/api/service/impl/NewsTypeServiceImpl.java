@@ -2,6 +2,8 @@ package com.scs.soft.educational.api.service.impl;
 
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.common.ResultCode;
+import com.scs.soft.educational.api.domain.dto.PageDto;
+import com.scs.soft.educational.api.domain.entity.Student;
 import com.scs.soft.educational.api.mapper.NewsTypeMapper;
 import com.scs.soft.educational.api.mapper.TypeMapper;
 import com.scs.soft.educational.api.service.NewsTypeService;
@@ -56,6 +58,20 @@ public class NewsTypeServiceImpl implements NewsTypeService {
         }
         return Result.success(mapList);
     }
+
+    @Override
+    public Result getNewsPage(PageDto pageDto) {
+        List<Map> mapList = null;
+        try {
+            mapList = newsTypeMapper.getAllNewsPageByType(pageDto);
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            return Result.failure(ResultCode.DATABASE_ERROR);
+        }
+        return Result.success(mapList);
+    }
+
+
 
 
 }

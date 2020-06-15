@@ -2,6 +2,7 @@ package com.scs.soft.educational.api.mapper;
 
 import com.scs.soft.educational.api.domain.entity.Student;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -31,4 +32,13 @@ public interface StudentMapper {
      */
     @Select("SELECT * FROM student WHERE mobile = #{mobile} AND password = #{password}")
     Student studentLogin(String mobile,String password) throws SQLException;
+
+    /**
+     * 头像、昵称、性别
+     * @param student
+     * @throws SQLException
+     */
+    @Update("UPDATE student SET avatar=#{avatar},nickname=#{nickname},gender=#{gender} " +
+            "WHERE pk_student_id=#{pkStudentId}")
+    void update(Student student) throws SQLException;
 }
