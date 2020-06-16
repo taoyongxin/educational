@@ -57,6 +57,7 @@ public class StudentServiceImpl implements StudentService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Result.success("数据修改成功");
+        Student student1 = studentMapper.getStudentByPkStudentId(student.getPkStudentId());
+        return Result.success(student1);
     }
 }

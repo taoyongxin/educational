@@ -44,20 +44,7 @@ public class Student {
      */
     private String className;
 
-    /**
-     * 昵称
-     */
-    private String nickname;
 
-    /**
-     * 学号
-     */
-    private String jobNumber;
-
-    /**
-     * 头像
-     */
-    private String avatar;
     /**
      * 创建时间
      */
@@ -70,4 +57,19 @@ public class Student {
      * 是否删除
      */
     private Boolean isDeleted;
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 昵称
+     */
+    private String nickname;
+
+    /**
+     * 学号
+     */
+    private String jobNumber;
+
+
 }

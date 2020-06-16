@@ -33,6 +33,9 @@ public interface StudentMapper {
     @Select("SELECT * FROM student WHERE mobile = #{mobile} AND password = #{password}")
     Student studentLogin(String mobile,String password) throws SQLException;
 
+    @Select("SELECT * FROM student WHERE pk_student_id = #{id}")
+    Student getStudentByPkStudentId(Long id);
+
     /**
      * 头像、昵称、性别
      * @param student
