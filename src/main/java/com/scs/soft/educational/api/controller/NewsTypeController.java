@@ -47,4 +47,9 @@ public class NewsTypeController {
         return newsTypeService.getNewsPage(pageDto);
     }
 
+    @ApiOperation(value = "分类查询所有资讯分类",notes = "")
+    @PostMapping(value = "/news/page")
+    public Result getAllNews(@RequestBody PageDto pageDto){
+        return newsTypeService.getAllNews(pageDto);
+    }
 }

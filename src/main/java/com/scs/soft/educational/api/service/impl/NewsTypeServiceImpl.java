@@ -3,7 +3,6 @@ package com.scs.soft.educational.api.service.impl;
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.common.ResultCode;
 import com.scs.soft.educational.api.domain.dto.PageDto;
-import com.scs.soft.educational.api.domain.entity.Student;
 import com.scs.soft.educational.api.mapper.NewsTypeMapper;
 import com.scs.soft.educational.api.mapper.TypeMapper;
 import com.scs.soft.educational.api.service.NewsTypeService;
@@ -71,7 +70,13 @@ public class NewsTypeServiceImpl implements NewsTypeService {
         return Result.success(mapList);
     }
 
+    @Override
+    public Result getAllNews(PageDto pageDto) {
+
+            List<Map> mapList=newsTypeMapper.getAllNews(pageDto);
+            return Result.success(mapList);
+        }
+    }
 
 
 
-}

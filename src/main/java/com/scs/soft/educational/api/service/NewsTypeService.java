@@ -2,7 +2,6 @@ package com.scs.soft.educational.api.service;
 
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.domain.dto.PageDto;
-import com.scs.soft.educational.api.domain.entity.Student;
 
 /**
  * @author Tao
@@ -27,5 +26,11 @@ public interface NewsTypeService {
      */
     Result getNewsPage(PageDto pageDto);
 
+    /**
+     * 资讯分类
+     * @param pageDto
+     * @return
+     */
+    Result getAllNews(PageDto pageDto);
 
 }

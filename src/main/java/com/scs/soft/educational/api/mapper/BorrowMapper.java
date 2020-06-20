@@ -10,13 +10,14 @@ import java.util.Map;
 /**
  * @author Tao
  */
-public interface NewsMapper {
+public interface BorrowMapper {
     /**
-     * 分页查询资讯
+     * 分页查询所有借阅信息
      * @param pageDto
-     * @return
+     * @returns
      */
-    @Select("SELECT * FROM news WHERE is_deleted=false " +
+    @Select("SELECT * FROM borrow WHERE is_deleted=false " +
             "LIMIT ${pageDto.pageSize*(pageDto.currentPage-1)},#{pageDto.pageSize}")
-    List<Map> getAllNews(@Param("pageDto") PageDto pageDto);
+    List<Map> getAllBorrows(@Param("pageDto")PageDto pageDto);
+
 }

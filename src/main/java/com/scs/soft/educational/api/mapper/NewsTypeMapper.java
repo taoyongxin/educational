@@ -48,4 +48,13 @@ public interface NewsTypeMapper {
             "WHERE t1.type_id = #{pageDto.id} AND t2.is_deleted=false " +
             "LIMIT ${pageDto.pageSize*(pageDto.currentPage-1)},#{pageDto.pageSize}")
     List<Map> getAllNewsPageByType(@Param("pageDto") PageDto pageDto)throws SQLException;
+
+    /**
+     * 分页查询所有资讯
+     * @param pageDto
+     * @return
+     */
+    @Select("SELECT * FROM news WHERE is_deleted=false " +
+            "LIMIT ${pageDto.pageSize*(pageDto.currentPage-1)},#{pageDto.pageSize}")
+    List<Map> getAllNews(@Param("pageDto") PageDto pageDto);
 }

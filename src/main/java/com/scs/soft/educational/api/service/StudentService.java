@@ -2,6 +2,7 @@ package com.scs.soft.educational.api.service;
 
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.domain.dto.LoginDto;
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.entity.Student;
 
 /**
@@ -26,4 +27,11 @@ public interface StudentService {
      * @return
      */
     Result updateStudent(Student student);
+
+    /**
+     * 分页查询所有学生信息.
+     * @param pageDto
+     * @return
+     */
+    Result getAllStudentByPage(PageDto pageDto);
 }

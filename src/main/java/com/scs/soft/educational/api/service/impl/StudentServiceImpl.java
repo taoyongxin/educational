@@ -3,6 +3,7 @@ package com.scs.soft.educational.api.service.impl;
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.common.ResultCode;
 import com.scs.soft.educational.api.domain.dto.LoginDto;
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.entity.Student;
 import com.scs.soft.educational.api.mapper.StudentMapper;
 import com.scs.soft.educational.api.service.StudentService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Tao
@@ -59,4 +61,14 @@ public class StudentServiceImpl implements StudentService {
         }
         return Result.success("数据修改成功");
     }
-}
+
+    @Override
+    public Result getAllStudentByPage(PageDto pageDto) {
+        List<Map> mapList=studentMapper.getAllStudents(pageDto);
+        return Result.success(mapList);
+    }
+
+
+
+    }
+

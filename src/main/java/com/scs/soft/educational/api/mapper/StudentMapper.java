@@ -1,11 +1,14 @@
 package com.scs.soft.educational.api.mapper;
 
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.entity.Student;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Tao
@@ -41,4 +44,13 @@ public interface StudentMapper {
     @Update("UPDATE student SET avatar=#{avatar},nickname=#{nickname},gender=#{gender} " +
             "WHERE pk_student_id=#{pkStudentId}")
     void update(Student student) throws SQLException;
+
+    /**
+     * 分页查询所有学生
+     * @param pageDto
+     * @return
+     */
+    @Select("SELECT * FROM student WHERE is_deleted=false " +
+            "LIMIT ${pageDto.pageSize*(pageDto.currentPage-1)},#{pageDto.pageSize}")
+    List<Map> getAllStudents(@Param("pageDto") PageDto pageDto);
 }

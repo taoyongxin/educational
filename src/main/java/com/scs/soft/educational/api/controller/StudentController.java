@@ -2,12 +2,16 @@ package com.scs.soft.educational.api.controller;
 
 import com.scs.soft.educational.api.common.Result;
 import com.scs.soft.educational.api.domain.dto.LoginDto;
+import com.scs.soft.educational.api.domain.dto.PageDto;
 import com.scs.soft.educational.api.domain.entity.Student;
 import com.scs.soft.educational.api.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -43,5 +47,11 @@ public class StudentController {
     @PostMapping(value = "/update")
     public Result updateStudent(@RequestBody Student student){
         return studentService.updateStudent(student);
+    }
+
+    @ApiOperation(value = "分页查询所有学生信息", notes = "")
+    @PostMapping(value = "/page")
+    public Result getAllNewsByType(@RequestBody PageDto pageDto) {
+        return studentService.getAllStudentByPage(pageDto);
     }
 }
