@@ -24,12 +24,8 @@ class StudentMapperTest {
 
     @Test
     void studentLogin() throws SQLException{
-        Student student = studentMapper.studentLogin("17826012341","1234567");
-        if (student!=null){
-            System.out.println("用户登录成功");
-        } else {
-            System.out.println("用户帐号或者密码错误");
-        }
+        Student student = studentMapper.studentLogin("17826012341","123456");
+        System.out.println(student);
     }
 
     @Test
@@ -38,8 +34,14 @@ class StudentMapperTest {
                 .pkStudentId((long)1)
                 .avatar("avatar.jpg")
                 .gender("女")
-                .nickname("梁小弟")
+                .nickname("梁弟")
                 .build();
         studentMapper.update(student);
+    }
+
+    @Test
+    void name() {
+        Student student = studentMapper.getStudentByPkStudentId((long)1);
+        System.out.println(student);
     }
 }
