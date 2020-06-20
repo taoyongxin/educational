@@ -1,5 +1,7 @@
 package com.scs.soft.educational.api.domain.entity;
 
+import lombok.Builder;
+
 import java.sql.Timestamp;
 
 /**
@@ -9,6 +11,7 @@ import java.sql.Timestamp;
  * @Description TODO
  * @date 2020-06-18 23:16
  **/
+@Builder
 public class Borrow {
     /**
      * 主键
