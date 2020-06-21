@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -44,18 +46,18 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public Result deletedBook(Long pkBookId) {
-        Book book = bookMapper.getBookByPkBookId(pkBookId);
-        if (book != null) {
-            try {
-                bookMapper.deleteBook(pkBookId);
-            } catch (SQLException e) {
-                e.printStackTrace();
+        public Result deletedBook(Long pkBookId) {
+            Book book = bookMapper.getBookByPkBookId(pkBookId);
+            if (book != null) {
+                try {
+                    bookMapper.deleteBook(pkBookId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return Result.success("删除图书成功");
+            } else {
+                return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
             }
-            return Result.success("删除图书成功");
-        } else {
-            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
-        }
     }
 
     /**
@@ -95,14 +97,31 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Result insertBook(Book book) {
+        Book book1 = Book.builder()
+                .author(book.getAuthor())
+                .bookName(book.getBookName())
+                .bookNumber(book.getBookNumber())
+                .bookResidueNumber(book.getBookResidueNumber())
+                .cover(book.getCover())
+                .description(book.getDescription())
+                .gmtCreate(Timestamp.valueOf(LocalDateTime.now()))
+                .gmtModified(Timestamp.valueOf(LocalDateTime.now()))
+                .isDeleted(false)
+                .type(book.getType())
+                .build();
         try {
-            bookMapper.insert(book);
+            bookMapper.insert(book1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return Result.success("新增成功");
     }
 
+    /**
+     * 修改图书
+     * @param book
+     * @return
+     */
     @Override
     public Result updateBook(Book book) {
         try {

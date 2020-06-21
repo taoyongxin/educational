@@ -54,7 +54,7 @@ public interface BookMapper {
     void insert(Book book) throws SQLException;
 
     /**
-     * 逻辑删除图书
+     * 修改图书
      * @param book
      * @throws SQLException
      */
